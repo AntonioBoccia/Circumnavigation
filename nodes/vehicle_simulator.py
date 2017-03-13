@@ -8,7 +8,7 @@ import threading as thd
 import numpy as np
 
 import circumnavigation_moving_target.srv as dns
-
+import geometry_msgs.msg as gm
 
 LOCK = thd.Lock()
 #Initial position
@@ -41,8 +41,11 @@ rp.Service('RemoveVehicle', dns.RemoveAgent, remove_vehicle_handler)
 
 #Publisher
 pub = rp.Publisher('position', gms.Point, queue_size=10)
+#Publisher position+time
+y_pub= rp.Publisher(name='y', data_class=gm.PointStamped, queue_size=10)
 
 
+#Subscriber
 def cmdvel_callback(msg):
     global velocity
     LOCK.acquire()
@@ -60,11 +63,17 @@ while not rp.is_shutdown() and not start:
     LOCK.acquire()
     if not velocity is None:
         start = True
-    #else:
-        #rp.logwarn('waiting for cmdvel')
+    #Position message
+    y_msg=gm.PointStamped()
+    y_msg.header.seq=0
+    y_msg.header.stamp = rp.Time.now()
+    y_msg.point.x=position[0]
+    y_msg.point.y=position[1]
+    y_msg.point.z=0
     LOCK.release()
     #Initial position publishing
     pub.publish(gms.Point(x=position[0], y=position[1]))
+    y_pub.publish(y_msg)
     RATE.sleep()
 while not rp.is_shutdown():
     LOCK.acquire()
@@ -72,8 +81,15 @@ while not rp.is_shutdown():
         rp.signal_shutdown("agent vehicle removed")
     #Integration
     position = position+velocity*TIME_STEP
-    #rp.logwarn(position)
+    #Position+time message
+    y_msg=gm.PointStamped()
+    y_msg.header.seq=0
+    y_msg.header.stamp = rp.Time.now()
+    y_msg.point.x=position[0]
+    y_msg.point.y=position[1]
+    y_msg.point.z=0
     LOCK.release()
     #Position publishing
     pub.publish(gms.Point(x=position[0], y=position[1]))
+    y_pub.publish(y_msg)
     RATE.sleep()
