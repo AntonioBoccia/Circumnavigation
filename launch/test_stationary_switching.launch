@@ -1,0 +1,251 @@
+<launch>
+
+
+  <rosparam command='load' file='$(find circumnavigation_moving_target)/param/target.yaml'/>
+
+  
+  
+  <group ns='agent1'>
+
+
+    <param name='rate' type='double' value='150.0'/>
+
+    <rosparam param='node_name'>
+      'agent1'
+    </rosparam>
+
+    <param name='delay' type='double' value='12.0'/>
+
+    <rosparam param='initial_position'>
+      [3.0, 2.0]
+    </rosparam>
+
+    <rosparam param='initial_estimate'>
+      [1.3, 1.1]
+    </rosparam>
+
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/target.yaml'/>
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/estimate_stationary.yaml'/>
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/planner_stationary.yaml'/>
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/target.yaml'/>
+  
+
+    <node name='vehicle_simulator'
+      pkg='circumnavigation_moving_target'
+      type='vehicle_simulator.py'/>
+
+    <node name='planner_switching'
+      pkg='circumnavigation_moving_target'
+      type='planner_switching.py'
+      output='screen'/>
+
+    <node name='estimate_stationary'
+      pkg='circumnavigation_moving_target'
+      type='estimate_stationary.py'/>
+
+    <node name='sensor_simulator_stationary'
+      pkg='circumnavigation_moving_target'
+      type='sensor_simulator_stationary.py'/>
+
+  </group>
+
+<group ns='agent2'>
+
+	<param name='rate' type='double' value='150.0'/>
+
+    <rosparam param='node_name'>
+      'agent2'
+    </rosparam>
+
+    <param name='delay' type='double' value='18.0'/>
+  
+    <rosparam param='initial_position'>
+      [5.0, 0.0]
+    </rosparam>
+
+    <rosparam param='initial_estimate'>
+      [0.8, 1.1]
+    </rosparam>
+
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/target.yaml'/>
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/estimate_stationary.yaml'/>
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/planner_stationary.yaml'/>
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/target.yaml'/>
+  
+
+    <node name='vehicle_simulator'
+      pkg='circumnavigation_moving_target'
+      type='vehicle_simulator.py'/>
+
+    <node name='planner_switching'
+      pkg='circumnavigation_moving_target'
+      type='planner_switching.py'/>
+
+    <node name='estimate_stationary'
+      pkg='circumnavigation_moving_target'
+      type='estimate_stationary.py'/>
+
+    <node name='sensor_simulator_stationary'
+      pkg='circumnavigation_moving_target'
+      type='sensor_simulator_stationary.py'/>
+
+  </group>
+
+<group ns='agent3'>
+
+	<param name='rate' type='double' value='150.0'/>
+
+    <rosparam param='node_name'>
+      'agent3'
+    </rosparam>
+  
+    <param name='delay' type='double' value='50.0'/>
+
+    <rosparam param='initial_position'>
+      [-2.0, 0.0]
+    </rosparam>
+
+    <rosparam param='initial_estimate'>
+      [-0.5, 1.5]
+    </rosparam>
+
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/target.yaml'/>
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/estimate_stationary.yaml'/>
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/planner_stationary.yaml'/>
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/target.yaml'/>
+  
+
+    <node name='vehicle_simulator'
+      pkg='circumnavigation_moving_target'
+      type='vehicle_simulator.py'/>
+
+    <node name='planner_switching'
+      pkg='circumnavigation_moving_target'
+      type='planner_switching.py'/>
+
+    <node name='estimate_stationary'
+      pkg='circumnavigation_moving_target'
+      type='estimate_stationary.py'/>
+
+    <node name='sensor_simulator_stationary'
+      pkg='circumnavigation_moving_target'
+      type='sensor_simulator_stationary.py'/>
+
+  </group>
+
+  <group ns='agent4'>
+
+  	<param name='rate' type='double' value='150.0'/>
+
+    <rosparam param='node_name'>
+      'agent4'
+    </rosparam>
+  
+    <param name='delay' type='double' value='70.0'/>
+
+    <rosparam param='initial_position'>
+      [6.0, 0.0]
+    </rosparam>
+
+    <rosparam param='initial_estimate'>
+      [0.7, 1.9]
+    </rosparam>
+
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/target.yaml'/>
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/estimate_stationary.yaml'/>
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/planner_stationary.yaml'/>
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/target.yaml'/>
+  
+
+    <node name='vehicle_simulator'
+      pkg='circumnavigation_moving_target'
+      type='vehicle_simulator.py'/>
+
+    <node name='planner_switching'
+      pkg='circumnavigation_moving_target'
+      type='planner_switching.py'/>
+
+    <node name='estimate_stationary'
+      pkg='circumnavigation_moving_target'
+      type='estimate_stationary.py'/>
+
+    <node name='sensor_simulator_stationary'
+      pkg='circumnavigation_moving_target'
+      type='sensor_simulator_stationary.py'/>
+
+  </group>
+
+
+  <group ns='agent5'>
+
+  	<param name='rate' type='double' value='150.0'/>
+
+    <rosparam param='node_name'>
+      'agent5'
+    </rosparam>
+  
+    <param name='delay' type='double' value='70.0'/>
+
+    <rosparam param='initial_position'>
+      [6.0, 2.0]
+    </rosparam>
+
+    <rosparam param='initial_estimate'>
+      [0.95, 1.5]
+    </rosparam>
+
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/target.yaml'/>
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/estimate_stationary.yaml'/>
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/planner_stationary.yaml'/>
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/target.yaml'/>
+  
+
+    <node name='vehicle_simulator'
+      pkg='circumnavigation_moving_target'
+      type='vehicle_simulator.py'/>
+
+    <node name='planner_switching'
+      pkg='circumnavigation_moving_target'
+      type='planner_switching.py'/>
+
+    <node name='estimate_stationary'
+      pkg='circumnavigation_moving_target'
+      type='estimate_stationary.py'/>
+
+    <node name='sensor_simulator_stationary'
+      pkg='circumnavigation_moving_target'
+      type='sensor_simulator_stationary.py'/>
+
+  </group>
+  
+
+    <param name='delay' type='double' value='90.0'/>
+    <param name='agent_to_remove' type='str' value='agent2'/>
+    
+    <node name='remove_agent_2'
+      pkg='circumnavigation_moving_target'
+      type='remove_agent.py'
+      output='screen'/>
+
+
+    <node name='cloud_add_remove'
+      pkg='circumnavigation_moving_target'
+      type='cloud_add_remove.py'
+      output='screen'/>
+
+    <param name='rate' type='double' value='150.0'/>
+    
+    <rosparam command='load' file='$(find circumnavigation_moving_target)/param/plotter_stationary.yaml'/>
+
+    <node name='plotter_stationary'
+      pkg='circumnavigation_moving_target'
+      type='plotter_stationary.py'/>
+
+
+    <node
+     pkg="rosbag"
+     type="record"
+     name="complete_bag"
+     args="-a -o /$(find circumnavigation_moving_target)Stationary_switching.bag"/>
+
+</launch>
